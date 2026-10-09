@@ -1,0 +1,23 @@
+#
+# Changes to this file will be overwritten by `trmnlp pull`.
+#
+# Docs: https://help.trmnl.com/en/articles/10542599-importing-and-exporting-private-plugins#h_581fb988f0
+#
+---
+strategy: polling
+id:
+no_screen_padding: 'no'
+dark_mode: 'no'
+static_data: ''
+polling_verb: get
+framework_version: latest
+polling_url: https://api.tomtom.com/routing/1/calculateRoute/49.26872,-123.01290:49.17518,-123.07247/json?key={{ tomtom_api_key }}&traffic=true&travelMode=car&departAt=now&computeTravelTimeFor=all&routeRepresentation=summaryOnly
+polling_headers: ''
+name: Crystal's Commute
+description: Live drive time home to office.
+refresh_interval: 15
+custom_fields:
+- keyname: tomtom_api_key
+  name: TomTom API Key
+  field_type: password
+  description: A TomTom Developer API key (Routing API).

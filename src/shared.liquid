@@ -1,0 +1,77 @@
+{% template commute_scene %}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -22 400 164" width="100%" shape-rendering="crispEdges" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Home -->
+  <g>
+    <path d="M8 50 L40 22 L72 50" />
+    <path d="M56 36 V24 H64 V43" />
+    <rect x="16" y="46" width="48" height="38" fill="white" />
+    <rect x="34" y="62" width="12" height="22" fill="black" />
+    <rect x="21" y="54" width="9" height="9" />
+    <rect x="50" y="54" width="9" height="9" />
+  </g>
+
+  <!-- Office -->
+  <g>
+    <rect x="330" y="14" width="56" height="70" fill="white" />
+    <path d="M326 14 H390" />
+    <path d="M346 84 V72 H370 V84" fill="black" />
+    {% for row in (0..2) %}
+    {% assign y = row | times: 16 | plus: 22 %}
+    <rect x="337" y="{{ y }}" width="10" height="9" fill="black" stroke-width="0" />
+    <rect x="353" y="{{ y }}" width="10" height="9" fill="black" stroke-width="0" />
+    <rect x="369" y="{{ y }}" width="10" height="9" fill="black" stroke-width="0" />
+    {% endfor %}
+  </g>
+
+  <!-- Road -->
+  <path d="M78 84 H324" />
+  <path d="M78 98 H324" />
+  <path d="M84 91 H320" stroke-width="2" stroke-dasharray="10 8" />
+  <path d="M2 84 H78 M324 84 H398" stroke-width="3" />
+
+  <!-- 2025 Hyundai Tucson -->
+  <g transform="translate(146 47) scale(1.25)">
+    <path d="M-16 16 H-4 M-22 23 H-6 M-14 30 H-2" stroke-width="2" />
+    <path d="M11 3 H47 M14 3 V7 M44 3 V6.5" stroke-width="1.5" />
+    <path d="M2 31 V17 L9 7.5 L50 6.5 L62 15 L79 18 Q84 19 84 23 V31 Z" fill="black" />
+    <path d="M12 10.3 L20 10 L21.5 15 L10 14 Z" fill="white" stroke-width="0" />
+    <path d="M23 9.8 L36 9.3 V15.5 H24 Z" fill="white" stroke-width="0" />
+    <path d="M39 9.2 L48.5 8.8 L57 15.5 H39 Z" fill="white" stroke-width="0" />
+    <path d="M7 31 L9.5 21.5 L26.5 21.5 L29 31 M55 31 L57.5 21.5 L74.5 21.5 L77 31" stroke="white" stroke-width="1.5" fill="none" />
+    <path d="M76 20.5 L79 22 L82 20.5" stroke="white" stroke-width="1.5" fill="none" />
+    <path d="M3.5 16 V20" stroke="white" stroke-width="1.5" />
+    <circle cx="18" cy="30" r="7.5" fill="black" stroke="white" stroke-width="2" />
+    <circle cx="66" cy="30" r="7.5" fill="black" stroke="white" stroke-width="2" />
+    <circle cx="18" cy="30" r="2.5" fill="white" stroke-width="0" />
+    <circle cx="66" cy="30" r="2.5" fill="white" stroke-width="0" />
+  </g>
+
+  <!-- Plane over Boeing -->
+  <g transform="translate(332 -20)">
+    <path d="M3 6 H36 L42 0 H45 L42 12 H4 Q0 12 0 9 Q0 6 3 6 Z" fill="black" stroke-width="2" />
+    <path d="M15 9 H26 L19 18 H14 Z" fill="black" stroke-width="2" />
+    <circle cx="8" cy="9" r="1.2" fill="white" stroke-width="0" />
+    <circle cx="13" cy="9" r="1.2" fill="white" stroke-width="0" />
+    <circle cx="18" cy="9" r="1.2" fill="white" stroke-width="0" />
+    <path d="M48 5 H58 M50 10 H64" stroke-width="2" stroke-dasharray="4 3" />
+  </g>
+
+  {% if eta_min %}
+  <g class="value" fill="black" stroke="none">
+    <text x="203" y="44" text-anchor="middle" font-size="36" font-weight="500">{{ eta_min }} min</text>
+    <text x="2" y="119" font-size="16" font-weight="700">Home</text>
+    <text x="2" y="138" font-size="14">Leave {{ leave_at }}</text>
+    <text x="398" y="119" text-anchor="end" font-size="16" font-weight="700">Boeing</text>
+    <text x="398" y="138" text-anchor="end" font-size="14">Arrive {{ arrive_at }}</text>
+  </g>
+  {% endif %}
+</svg>
+{% endtemplate %}
+
+{% template commute_footer %}
+{% if error %}
+<span class="title title--small">Can't get a drive time right now</span>
+{% else %}
+<span class="title title--small">{{ traffic_note }}</span>
+{% endif %}
+{% endtemplate %}
