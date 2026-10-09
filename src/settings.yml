@@ -5,7 +5,7 @@
 #
 ---
 strategy: polling
-id:
+id: 501222
 no_screen_padding: 'no'
 dark_mode: 'no'
 static_data: ''
