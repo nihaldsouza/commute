@@ -21,3 +21,8 @@ custom_fields:
   name: TomTom API Key
   field_type: password
   description: A TomTom Developer API key (Routing API).
+- keyname: author_bio
+  name: About This Plugin
+  field_type: author_bio
+  description: Live drive time from home to Boeing, refreshed every 15 minutes during the Tuesday morning commute.
+  github_url: https://github.com/nihaldsouza/commute
